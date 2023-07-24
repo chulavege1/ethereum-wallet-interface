@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/js",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "target": "es5",
+    "allowJs": true,
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js"],
+  "exclude": ["node_modules"]
+}
