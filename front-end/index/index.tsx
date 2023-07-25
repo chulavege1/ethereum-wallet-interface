@@ -1,9 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { HashRouter } from "react-router-dom";
 import { App } from "./app";
-import { WalletProvider } from "~CONTEXT/web3-wallet/walletProvider";
-import { Pool_data_provider } from "~CONTEXT/pool-data/pool-data-provider";
-import { BrowserRouter } from "react-router-dom";
+import { Pool_data_provider } from "~CONTEXT/pool-data";
+import { Web3_modal_provider } from "~APISERVICES/web3-provider";
 
 const root = document.getElementById("app");
 
@@ -13,12 +13,12 @@ if (!root) {
 
 createRoot(root).render(
   <React.StrictMode>
-    <WalletProvider>
+    <Web3_modal_provider>
       <Pool_data_provider>
-        <BrowserRouter>
+        <HashRouter>
           <App />
-        </BrowserRouter>
+        </HashRouter>
       </Pool_data_provider>
-    </WalletProvider>
+    </Web3_modal_provider>
   </React.StrictMode>,
 );

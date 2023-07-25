@@ -5,8 +5,8 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
 const ESLintPlugin = require("eslint-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin =
+//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 //
 const isProduction = process.env.NODE_ENV === "development";
 // Active backend link for ./API_service/folder request.
@@ -24,7 +24,7 @@ module.exports = () => {
     cache: {
       type: "filesystem",
       buildDependencies: {
-        config: [__filename], // When configuration changes, cache will be invalidated
+        config: [__filename],
       },
     },
     entry: ["./front-end/index/index.tsx"],
@@ -59,7 +59,7 @@ module.exports = () => {
         "~UI": path.resolve(__dirname, "front-end/components/ui"),
         "~UX": path.resolve(__dirname, "front-end/components/ux"),
         "~APISERVICES": path.resolve(__dirname, "front-end/api-services"),
-        "~ABI": path.resolve(__dirname, "front-end/abi"),
+        "~ABI": path.resolve(__dirname, "abi"),
       },
       fallback: {
         http: require.resolve("stream-http"),
@@ -100,14 +100,7 @@ module.exports = () => {
 
         {
           test: /\.s[ac]ss$/i,
-          use: [
-            // Creates `style` nodes from JS strings
-            "style-loader",
-            // Translates CSS into CommonJS
-            "css-loader",
-            // Compiles Sass to CSS
-            "sass-loader",
-          ],
+          use: ["style-loader", "css-loader", "sass-loader"],
         },
 
         {
@@ -169,7 +162,9 @@ module.exports = () => {
         filename: "./index.html",
       }),
       new ESLintPlugin({
-        extensions: ["js", "jsx", "ts", "tsx"],
+        extensions: [
+          // "js", 
+          "jsx", "ts", "tsx"],
       }),
       new webpack.DefinePlugin({
         "process.env.REACT_APP_API_BASE_URL": JSON.stringify(API_BASE_URL),

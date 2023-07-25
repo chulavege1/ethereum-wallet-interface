@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "target": "es5",
+    "resolveJsonModule": true,
     "allowJs": true,
     "lib": ["dom", "dom.iterable", "esnext"]
   },

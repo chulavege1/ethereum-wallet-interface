@@ -1,13 +1,38 @@
-import React, { useContext, useState } from "react";
-import { Pool_data_context } from "~CONTEXT/pool-data";
+import React, { useEffect, useState } from "react";
+import { useAccount, useNetwork } from "wagmi";
+import { useBalanceContext } from "~CONTEXT/pool-data";
 import "./liquidity_market.sass";
 
 const Liquidity_market: React.FC = () => {
-  const { data } = useContext(Pool_data_context);
-  const [sortField, setSortField] = useState<keyof Coin>("name");
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+  const { isConnected } = useAccount();
+  const { chain } = useNetwork();
 
-  const sortedData = [...data.coins].sort((a, b) => {
+  const { tokenAddresses, balances } = useBalanceContext();
+
+  const [sortField, setSortField] = useState<"name" | "balance">("name");
+  const [lastSortField, setLastSortField] = useState<"name" | "balance">(
+    "name",
+  );
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (balances.length > 0) {
+      setIsLoading(false);
+    }
+  }, [balances]);
+
+  const handleSortClick = (field: "name" | "balance") => {
+    if (lastSortField === field) {
+      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+    } else {
+      setSortField(field);
+      setSortDirection("asc");
+      setLastSortField(field);
+    }
+  };
+
+  const sortedData = [...balances].sort((a, b) => {
     const fieldA = a[sortField];
     const fieldB = b[sortField];
     let comparison = 0;
@@ -16,48 +41,41 @@ const Liquidity_market: React.FC = () => {
     } else if (fieldA < fieldB) {
       comparison = -1;
     }
-    return sortDirection === "asc" ? comparison : comparison * -1;
+    return sortField === "balance" ? comparison * -1 : comparison;
   });
+
+  if (!isConnected) {
+    return <div className="isLoadPool">To continue connect your wallet</div>;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="isLoadPool">
+        {chain.id === 1 || chain.id === 137
+          ? "Loading pool data..."
+          : "Connect to polygon or ethereum net"}
+      </div>
+    );
+  }
 
   return (
     <div className="Liquidity_market">
       <div>
-        <button onClick={() => setSortField("name")}>Name</button>
-        <button onClick={() => setSortField("current_price")}>
-          Current Price
-        </button>
-        <button onClick={() => setSortField("rank")}>Rank</button>
-        <button onClick={() => setSortField("priceChange")}>
-          Price Change
-        </button>
-        <button onClick={() => setSortField("highPrice")}>High Price</button>
-        <button onClick={() => setSortField("lowPrice")}>Low Price</button>
+        <button onClick={() => handleSortClick("name")}>Name</button>
+        <button></button>
+        <button onClick={() => handleSortClick("balance")}>Balance</button>
       </div>
       <div>
-        {sortedData.map((coin) => (
-          <div key={coin.id}>
+        {sortedData.map((balance, index) => (
+          <div key={index}>
             <div>
-              <img src={coin.image} alt={coin.name} />
-              <h2>{coin.name}</h2>
-            </div>
-
-            <div>
-              <p>{coin.current_price.toFixed(2)}</p>
+              <h2>{balance.name}</h2>
             </div>
             <div>
-              <p>{coin.rank}</p>
+              <p style={{ fontSize: "16px" }}>{tokenAddresses[index]}</p>
             </div>
-
             <div>
-              <p>{coin.priceChange.toFixed(2)}</p>
-            </div>
-
-            <div>
-              <p>{coin.highPrice.toFixed(2)}</p>
-            </div>
-
-            <div>
-              <p>{coin.lowPrice.toFixed(2)}</p>
+              <p>{balance.balance}</p>
             </div>
           </div>
         ))}

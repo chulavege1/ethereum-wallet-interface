@@ -2,7 +2,7 @@ import React, { ReactElement, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 const Liquidity_market = React.lazy(() => import("~UX/liquidity-market"));
-const Dashboard = React.lazy(() => import("~UX/dashboard"));
+// const Dashboard = React.lazy(() => import("~UX/dashboard"));
 
 const Navigation: React.FC = (): ReactElement => {
   return (
@@ -17,7 +17,7 @@ const Navigation: React.FC = (): ReactElement => {
           </div>
         }
       />
-
+      {/* 
       <Route
         path="dashboard"
         element={
@@ -25,7 +25,7 @@ const Navigation: React.FC = (): ReactElement => {
             <Dashboard />
           </Suspense>
         }
-      />
+      /> */}
 
       <Route path="*" element={<>Not known path</>} />
     </Routes>

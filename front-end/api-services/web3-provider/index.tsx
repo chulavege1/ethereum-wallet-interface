@@ -1,50 +1,30 @@
-import { Web3Provider } from "@ethersproject/providers";
-import Web3Modal from "web3modal";
-import WalletConnectProvider from "@walletconnect/web3-provider";
+import React from "react";
+import {
+  EthereumClient,
+  w3mConnectors,
+  w3mProvider,
+} from "@web3modal/ethereum";
+import { Web3Modal } from "@web3modal/react";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { mainnet, polygon } from "wagmi/chains";
 
-export const web3Modal = new Web3Modal({
-  cacheProvider: true,
-  providerOptions: {
-    walletconnect: {
-      package: WalletConnectProvider,
-      options: {
-        rpc: {
-          137: "https://polygon-rpc.com",
-          56: "https://bsc-dataseed1.binance.org",
-        },
-      },
-    },
-  },
+const chains = [mainnet, polygon];
+const projectId = "d2e2d969472a9f1989ea35333b09fcda";
+
+const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors: w3mConnectors({ projectId, chains }),
+  publicClient,
 });
 
-export const initWeb3 = (
-  setProvider: (provider: Web3Provider) => void,
-  setActiveAddress: (address: string | null) => void,
-) => {
-  const loadWeb3Modal = async () => {
-    const rawProvider = await web3Modal.connect();
-    const newProvider = new Web3Provider(rawProvider);
-    setProvider(newProvider);
-    const signer = newProvider.getSigner();
-    const address = await signer.getAddress();
-    setActiveAddress(address);
-  };
+const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
-  if (web3Modal.cachedProvider) {
-    loadWeb3Modal();
-  }
-
-  const provider = window.ethereum;
-
-  if (!provider) return;
-
-  const handleAccountsChanged = (accounts: string[]) => {
-    if (accounts.length === 0) {
-      console.log("Please connect to Metamask.");
-    } else if (accounts[0] !== provider.selectedAddress) {
-      loadWeb3Modal();
-    }
-  };
-
-  provider.on("accountsChanged", handleAccountsChanged);
+export const Web3_modal_provider: React.FC = ({ children }) => {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      {children}
+      <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+    </WagmiConfig>
+  );
 };
