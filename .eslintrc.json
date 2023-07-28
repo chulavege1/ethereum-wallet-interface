@@ -31,7 +31,7 @@
     "react/react-in-jsx-scope": "error",
     "unused-imports/no-unused-imports": "error",
     "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
-  },  
+  },
   "settings": {
     "react": {
       "version": "18.2.0"

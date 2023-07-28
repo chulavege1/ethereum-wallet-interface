@@ -1,22 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { useAccount, useNetwork } from "wagmi";
+import { NETWORKS } from "~CONFIGS/available-networks";
 
 import LENDING_POOL_ADDRESS_PROVIDER from "~ABI/pool_addresses_provider.json";
-const LP_ADDRESS_PROVIDER_ABI = LENDING_POOL_ADDRESS_PROVIDER;
 
-const networks = {
-  Ethereum: {
-    providerURL:
-      "https://mainnet.infura.io/v3/b42ca6aa17b7460bbff8de90e888eaf7",
-    lpAddressProvider: "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
-  },
-  Polygon: {
-    providerURL:
-      "https://polygon-mainnet.infura.io/v3/b42ca6aa17b7460bbff8de90e888eaf7",
-    lpAddressProvider: "0x794a61358D6845594F94dc1DB02A252b5b4814aD",
-  },
-};
+const LP_ADDRESS_PROVIDER_ABI = LENDING_POOL_ADDRESS_PROVIDER;
 
 const ERC20_ABI = [
   "function name() view returns (string)",
@@ -24,9 +13,15 @@ const ERC20_ABI = [
   "function balanceOf(address) view returns (uint)",
 ];
 
+interface Balance {
+  name: string;
+  symbol: string;
+  balance: string;
+}
+
 interface BalanceContextProps {
   tokenAddresses: string[];
-  balances: string[];
+  balances: Balance[];
 }
 
 const BalanceContext = createContext<BalanceContextProps>({
@@ -36,19 +31,23 @@ const BalanceContext = createContext<BalanceContextProps>({
 
 export const useBalanceContext = () => useContext(BalanceContext);
 
-export const Pool_data_provider: React.FC = ({ children }) => {
+export const Pool_data_provider: React.FC<React.PropsWithChildren<unknown>> = ({
+  children,
+}) => {
   const { address } = useAccount();
   const { chain } = useNetwork();
+  console.log("address", address);
 
   const [tokenAddresses, setTokenAddresses] = useState<string[]>([]);
-  const [balances, setBalances] = useState<string[]>([]);
+  const [balances, setBalances] = useState<Balance[]>([]);
 
   useEffect(() => {
     if (!address) {
       return;
     }
 
-    const currentNetwork = networks[chain.name];
+    const currentNetwork = NETWORKS[chain.name as keyof typeof NETWORKS];
+    console.log("currentNetwork", currentNetwork);
     if (!currentNetwork) {
       console.error(`Network ${chain.name} not found in networks object`);
       return;
@@ -62,8 +61,8 @@ export const Pool_data_provider: React.FC = ({ children }) => {
     );
 
     lpAddressProviderContract.getReservesList().then(async (addresses) => {
-      const formattedAddresses = Array.from(addresses);
-      const newBalances = [];
+      const formattedAddresses: string[] = Array.from(addresses);
+      const newBalances: Balance[] = [];
 
       for (let i = 0; i < formattedAddresses.length; i++) {
         try {

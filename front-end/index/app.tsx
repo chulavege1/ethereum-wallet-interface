@@ -1,4 +1,3 @@
-// App.tsx
 import React from "react";
 import Sun from "~UI/space-ui/Sun";
 import Header from "~UX/header";

@@ -3,15 +3,27 @@
     "outDir": "./dist/js",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "esnext",
     "jsx": "react",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "target": "es5",
+    "target": "esnext",
     "resolveJsonModule": true,
     "allowJs": true,
-    "lib": ["dom", "dom.iterable", "esnext"]
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["front-end/*"],
+      "~APIS/*": ["front-end/API_service/*"],
+      "~IMG/*": ["front-end/img_icon_svg/*"],
+      "~CONTEXT/*": ["front-end/index/context/*"],
+      "~UI/*": ["front-end/components/ui/*"],
+      "~UX/*": ["front-end/components/ux/*"],
+      "~APISERVICES/*": ["front-end/api-services/*"],
+      "~ABI/*": ["abi/*"],
+      "~CONFIGS/*": ["front-end/index/configs/*"]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js"],
   "exclude": ["node_modules"]

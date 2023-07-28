@@ -3,17 +3,22 @@ import { useAccount, useNetwork } from "wagmi";
 import { useBalanceContext } from "~CONTEXT/pool-data";
 import "./liquidity_market.sass";
 
+type Balance = {
+  name: string;
+  balance: string;
+};
+type SortField = "name" | "balance";
+type SortDirection = "asc" | "desc";
+
 const Liquidity_market: React.FC = () => {
   const { isConnected } = useAccount();
   const { chain } = useNetwork();
 
   const { tokenAddresses, balances } = useBalanceContext();
 
-  const [sortField, setSortField] = useState<"name" | "balance">("name");
-  const [lastSortField, setLastSortField] = useState<"name" | "balance">(
-    "name",
-  );
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+  const [sortField, setSortField] = useState<SortField>("name");
+  const [lastSortField, setLastSortField] = useState<SortField>("name");
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -22,7 +27,7 @@ const Liquidity_market: React.FC = () => {
     }
   }, [balances]);
 
-  const handleSortClick = (field: "name" | "balance") => {
+  const handleSortClick = (field: SortField) => {
     if (lastSortField === field) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc");
     } else {
@@ -32,7 +37,7 @@ const Liquidity_market: React.FC = () => {
     }
   };
 
-  const sortedData = [...balances].sort((a, b) => {
+  const sortedData = [...balances].sort((a: Balance, b: Balance) => {
     const fieldA = a[sortField];
     const fieldB = b[sortField];
     let comparison = 0;

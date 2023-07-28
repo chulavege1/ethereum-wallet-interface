@@ -60,6 +60,7 @@ module.exports = () => {
         "~UX": path.resolve(__dirname, "front-end/components/ux"),
         "~APISERVICES": path.resolve(__dirname, "front-end/api-services"),
         "~ABI": path.resolve(__dirname, "abi"),
+        "~CONFIGS": path.resolve(__dirname, "front-end/index/configs"),
       },
       fallback: {
         http: require.resolve("stream-http"),
@@ -82,20 +83,12 @@ module.exports = () => {
         },
 
         {
-          test: /\.(ts|tsx)$/,
+          test: /\.tsx?$/,
           exclude: /node_modules/,
-          use: [
-            {
-              loader: "babel-loader",
-              options: {
-                presets: [
-                  "@babel/preset-env",
-                  "@babel/preset-react",
-                  "@babel/preset-typescript",
-                ],
-              },
-            },
-          ],
+          loader: "ts-loader",
+          options: {
+            transpileOnly: false,
+          },
         },
 
         {
@@ -163,8 +156,11 @@ module.exports = () => {
       }),
       new ESLintPlugin({
         extensions: [
-          // "js", 
-          "jsx", "ts", "tsx"],
+          // "js",
+          "jsx",
+          "ts",
+          "tsx",
+        ],
       }),
       new webpack.DefinePlugin({
         "process.env.REACT_APP_API_BASE_URL": JSON.stringify(API_BASE_URL),

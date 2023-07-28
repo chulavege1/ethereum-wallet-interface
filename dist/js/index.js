@@ -15522,107 +15522,116 @@
               (0, o.useEffect)(
                 function () {
                   if (n) {
-                    console.log("chain", a.name);
-                    var e = Xl[a.name],
-                      t = new Il(e.providerURL);
-                    new Yr(e.lpAddressProvider, Kl, t).getReservesList().then(
-                      (function () {
-                        var e,
-                          i =
-                            ((e = s().mark(function e(r) {
-                              var i, a, o, l, c, u, d, p;
-                              return s().wrap(
-                                function (e) {
-                                  for (;;)
-                                    switch ((e.prev = e.next)) {
-                                      case 0:
-                                        (i = Array.from(r)), (a = []), (o = 0);
-                                      case 3:
-                                        if (!(o < i.length)) {
-                                          e.next = 28;
-                                          break;
-                                        }
-                                        if (((e.prev = 4), (l = i[o]))) {
-                                          e.next = 9;
-                                          break;
-                                        }
-                                        return (
-                                          console.error(
-                                            "Token address at index "
-                                              .concat(o, " is invalid: ")
-                                              .concat(l),
-                                          ),
-                                          e.abrupt("continue", 25)
-                                        );
-                                      case 9:
-                                        return (
-                                          (c = new Yr(l, Jl, t)),
-                                          (e.next = 12),
-                                          c.name()
-                                        );
-                                      case 12:
-                                        return (
-                                          (u = e.sent),
-                                          (e.next = 15),
-                                          c.symbol()
-                                        );
-                                      case 15:
-                                        return (
-                                          (d = e.sent),
-                                          (e.next = 18),
-                                          c.balanceOf(n)
-                                        );
-                                      case 18:
-                                        (p = e.sent),
-                                          a.push({
-                                            name: u,
-                                            symbol: d,
-                                            balance: ql(p, 18),
-                                          }),
-                                          (e.next = 25);
-                                        break;
-                                      case 22:
-                                        (e.prev = 22),
-                                          (e.t0 = e.catch(4)),
-                                          console.error(
-                                            "Failed to get info for token at index "
-                                              .concat(o, ": ")
-                                              .concat(e.t0),
+                    var e = Xl[a.name];
+                    if (e) {
+                      var t = new Il(e.providerURL);
+                      new Yr(e.lpAddressProvider, Kl, t).getReservesList().then(
+                        (function () {
+                          var e,
+                            i =
+                              ((e = s().mark(function e(r) {
+                                var i, a, o, l, c, u, d, p;
+                                return s().wrap(
+                                  function (e) {
+                                    for (;;)
+                                      switch ((e.prev = e.next)) {
+                                        case 0:
+                                          (i = Array.from(r)),
+                                            (a = []),
+                                            (o = 0);
+                                        case 3:
+                                          if (!(o < i.length)) {
+                                            e.next = 28;
+                                            break;
+                                          }
+                                          if (((e.prev = 4), (l = i[o]))) {
+                                            e.next = 9;
+                                            break;
+                                          }
+                                          return (
+                                            console.error(
+                                              "Token address at index "
+                                                .concat(o, " is invalid: ")
+                                                .concat(l),
+                                            ),
+                                            e.abrupt("continue", 25)
                                           );
-                                      case 25:
-                                        o++, (e.next = 3);
-                                        break;
-                                      case 28:
-                                        h(i), m(a);
-                                      case 30:
-                                      case "end":
-                                        return e.stop();
-                                    }
-                                },
-                                e,
-                                null,
-                                [[4, 22]],
-                              );
-                            })),
-                            function () {
-                              var t = this,
-                                n = arguments;
-                              return new Promise(function (i, a) {
-                                var s = e.apply(t, n);
-                                function o(e) {
-                                  r(s, i, a, o, l, "next", e);
-                                }
-                                function l(e) {
-                                  r(s, i, a, o, l, "throw", e);
-                                }
-                                o(void 0);
+                                        case 9:
+                                          return (
+                                            (c = new Yr(l, Jl, t)),
+                                            (e.next = 12),
+                                            c.name()
+                                          );
+                                        case 12:
+                                          return (
+                                            (u = e.sent),
+                                            (e.next = 15),
+                                            c.symbol()
+                                          );
+                                        case 15:
+                                          return (
+                                            (d = e.sent),
+                                            (e.next = 18),
+                                            c.balanceOf(n)
+                                          );
+                                        case 18:
+                                          (p = e.sent),
+                                            a.push({
+                                              name: u,
+                                              symbol: d,
+                                              balance: ql(p, 18),
+                                            }),
+                                            (e.next = 25);
+                                          break;
+                                        case 22:
+                                          (e.prev = 22),
+                                            (e.t0 = e.catch(4)),
+                                            console.error(
+                                              "Failed to get info for token at index "
+                                                .concat(o, ": ")
+                                                .concat(e.t0),
+                                            );
+                                        case 25:
+                                          o++, (e.next = 3);
+                                          break;
+                                        case 28:
+                                          h(i), m(a);
+                                        case 30:
+                                        case "end":
+                                          return e.stop();
+                                      }
+                                  },
+                                  e,
+                                  null,
+                                  [[4, 22]],
+                                );
+                              })),
+                              function () {
+                                var t = this,
+                                  n = arguments;
+                                return new Promise(function (i, a) {
+                                  var s = e.apply(t, n);
+                                  function o(e) {
+                                    r(s, i, a, o, l, "next", e);
+                                  }
+                                  function l(e) {
+                                    r(s, i, a, o, l, "throw", e);
+                                  }
+                                  o(void 0);
+                                });
                               });
-                            });
-                        return function (e) {
-                          return i.apply(this, arguments);
-                        };
-                      })(),
-                    );
+                          return function (e) {
+                            return i.apply(this, arguments);
+                          };
+                        })(),
+                      );
+                    } else
+                      console.error(
+                        "Network ".concat(
+                          a.name,
+                          " not found in networks object",
+                        ),
+                      );
                   }
                 },
                 [n, a],
@@ -15696,16 +15705,16 @@
           s = n.n(a)()(i());
         s.push([
           e.id,
-          "*{margin:0;padding:0;color:#fff;box-sizing:border-box;text-decoration:none}button{color:#000}",
+          '*{margin:0;padding:0;color:#fff;box-sizing:border-box;text-decoration:none;font-family:Georgia,"Times New Roman",Times,serif}button{color:#000}',
           "",
           {
             version: 3,
             sources: ["webpack://./front-end/index/app.sass"],
             names: [],
             mappings:
-              "AAAA,EACI,QAAA,CACA,SAAA,CACA,UAAA,CACA,qBAAA,CACA,oBAAA,CAEJ,OACI,UAAA",
+              "AAAA,EACI,QAAA,CACA,SAAA,CACA,UAAA,CACA,qBAAA,CACA,oBAAA,CACA,iDAAA,CAEJ,OACI,UAAA",
             sourcesContent: [
-              "*\n    margin: 0\n    padding: 0\n    color: #fff\n    box-sizing: border-box\n    text-decoration: none\n\nbutton\n    color: #000",
+              '*\n    margin: 0\n    padding: 0\n    color: #fff\n    box-sizing: border-box\n    text-decoration: none\n    font-family: Georgia, "Times New Roman", Times, serif\n\nbutton\n    color: #000',
             ],
             sourceRoot: "",
           },
@@ -34183,111 +34192,6 @@
             },
           };
       },
-      555: (e, t, n) => {
-        "use strict";
-        n.d(t, { Eg: () => f, k_: () => A });
-        var r = n(7294),
-          i = n(1159);
-        Object.defineProperty,
-          Object.getOwnPropertySymbols,
-          Object.prototype.hasOwnProperty,
-          Object.prototype.propertyIsEnumerable,
-          Object.defineProperty,
-          Object.getOwnPropertySymbols,
-          Object.prototype.hasOwnProperty,
-          Object.prototype.propertyIsEnumerable;
-        var a = Object.defineProperty,
-          s = Object.getOwnPropertySymbols,
-          o = Object.prototype.hasOwnProperty,
-          l = Object.prototype.propertyIsEnumerable,
-          c = (e, t, n) =>
-            t in e
-              ? a(e, t, {
-                  enumerable: !0,
-                  configurable: !0,
-                  writable: !0,
-                  value: n,
-                })
-              : (e[t] = n);
-        function u(e) {
-          return r.createElement(
-            "w3m-modal",
-            ((e, t) => {
-              for (var n in t || (t = {})) o.call(t, n) && c(e, n, t[n]);
-              if (s) for (var n of s(t)) l.call(t, n) && c(e, n, t[n]);
-              return e;
-            })({}, e),
-          );
-        }
-        var h = Object.getOwnPropertySymbols,
-          d = Object.prototype.hasOwnProperty,
-          p = Object.prototype.propertyIsEnumerable;
-        const f = (0, r.memo)(function (e) {
-          var t = e,
-            { ethereumClient: a } = t,
-            s = ((e, t) => {
-              var n = {};
-              for (var r in e)
-                d.call(e, r) && t.indexOf(r) < 0 && (n[r] = e[r]);
-              if (null != e && h)
-                for (var r of h(e))
-                  t.indexOf(r) < 0 && p.call(e, r) && (n[r] = e[r]);
-              return n;
-            })(t, ["ethereumClient"]);
-          const o = (0, r.useCallback)(async () => {
-            i.ThemeCtrl.setThemeConfig(s),
-              a && i.Id.setEthereumClient(a),
-              i.ConfigCtrl.setConfig(s),
-              await Promise.all([n.e(4), n.e(871)]).then(n.bind(n, 2871)),
-              i.OptionsCtrl.setIsUiLoaded(!0);
-          }, [a, s]);
-          return (
-            (0, r.useEffect)(() => {
-              o();
-            }, [o]),
-            r.createElement(u, null)
-          );
-        });
-        Object.defineProperty,
-          Object.getOwnPropertySymbols,
-          Object.prototype.hasOwnProperty,
-          Object.prototype.propertyIsEnumerable;
-        var m = Object.defineProperty,
-          g = Object.getOwnPropertySymbols,
-          y = Object.prototype.hasOwnProperty,
-          v = Object.prototype.propertyIsEnumerable,
-          b = (e, t, n) =>
-            t in e
-              ? m(e, t, {
-                  enumerable: !0,
-                  configurable: !0,
-                  writable: !0,
-                  value: n,
-                })
-              : (e[t] = n),
-          w = (e, t) => {
-            for (var n in t || (t = {})) y.call(t, n) && b(e, n, t[n]);
-            if (g) for (var n of g(t)) v.call(t, n) && b(e, n, t[n]);
-            return e;
-          };
-        function A() {
-          const [e, t] = (0, r.useState)(i.jb.state);
-          return (
-            (0, r.useEffect)(() => {
-              const e = i.jb.subscribe((e) => t(w({}, e)));
-              return () => {
-                e();
-              };
-            }, []),
-            {
-              isOpen: e.open,
-              open: i.jb.open,
-              close: i.jb.close,
-              setDefaultChain: i.OptionsCtrl.setSelectedChain,
-            }
-          );
-        }
-      },
       3160: (e, t, n) => {
         "use strict";
         n.d(t, { E: () => i });
@@ -49459,7 +49363,9 @@
         }
         setHSL(e, t, n, r = zt.workingColorSpace) {
           if (
-            ((e = ((e % (i = 1)) + i) % i),
+            ((e = (function (e, t) {
+              return ((e % t) + t) % t;
+            })(e, 1)),
             (t = At(t, 0, 1)),
             (n = At(n, 0, 1)),
             0 === t)
@@ -49472,7 +49378,6 @@
               (this.g = br(i, r, e)),
               (this.b = br(i, r, e - 1 / 3));
           }
-          var i;
           return zt.toWorkingColorSpace(this, r), this;
         }
         setStyle(e, t = lt) {
@@ -62996,42 +62901,24 @@
           );
         };
       var pl = function () {
-          return t.createElement(
-            "svg",
-            {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "20",
-              fill: "none",
-              viewBox: "0 0 24 24",
-              stroke: "currentColor",
-            },
-            t.createElement("path", {
-              strokeLinecap: "round",
-              strokeLinejoin: "round",
-              strokeWidth: "2",
-              d: "M3 3h18v18H3V3z",
-            }),
-          );
-        },
-        fl = function () {
-          return t.createElement(
-            "svg",
-            {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "20",
-              fill: "none",
-              viewBox: "0 0 24 24",
-              stroke: "currentColor",
-            },
-            t.createElement("path", {
-              strokeLinecap: "round",
-              strokeLinejoin: "round",
-              strokeWidth: "2",
-              d: "M3 13h18M3 6h18M3 20h12",
-            }),
-          );
-        };
-      const ml = function () {
+        return t.createElement(
+          "svg",
+          {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "20",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+          },
+          t.createElement("path", {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: "2",
+            d: "M3 3h18v18H3V3z",
+          }),
+        );
+      };
+      const fl = function () {
         return t.createElement(
           "nav",
           null,
@@ -63041,96 +62928,191 @@
             t.createElement(pl, null),
             "Market",
           ),
-          t.createElement(
-            me,
-            { to: "dashboard" },
-            t.createElement(fl, null),
-            "Dashboard",
-          ),
         );
       };
-      var gl = s(5296),
-        yl = {};
-      (yl.styleTagTransform = ol()),
-        (yl.setAttributes = rl()),
-        (yl.insert = tl().bind(null, "head")),
-        (yl.domAPI = $o()),
-        (yl.insertStyleElement = al()),
-        Yo()(gl.Z, yl),
-        gl.Z && gl.Z.locals && gl.Z.locals;
-      var vl = s(555),
-        bl = s(6286);
-      const wl = function () {
-        var e = (0, bl.mA)(),
+      var ml = s(5296),
+        gl = {};
+      (gl.styleTagTransform = ol()),
+        (gl.setAttributes = rl()),
+        (gl.insert = tl().bind(null, "head")),
+        (gl.domAPI = $o()),
+        (gl.insertStyleElement = al()),
+        Yo()(ml.Z, gl),
+        ml.Z && ml.Z.locals && ml.Z.locals;
+      var yl = s(1159);
+      Object.defineProperty,
+        Object.getOwnPropertySymbols,
+        Object.prototype.hasOwnProperty,
+        Object.prototype.propertyIsEnumerable,
+        Object.defineProperty,
+        Object.getOwnPropertySymbols,
+        Object.prototype.hasOwnProperty,
+        Object.prototype.propertyIsEnumerable;
+      var vl = Object.defineProperty,
+        bl = Object.getOwnPropertySymbols,
+        wl = Object.prototype.hasOwnProperty,
+        Al = Object.prototype.propertyIsEnumerable,
+        xl = (e, t, n) =>
+          t in e
+            ? vl(e, t, {
+                enumerable: !0,
+                configurable: !0,
+                writable: !0,
+                value: n,
+              })
+            : (e[t] = n);
+      function El(e) {
+        return t.createElement(
+          "w3m-modal",
+          ((e, t) => {
+            for (var n in t || (t = {})) wl.call(t, n) && xl(e, n, t[n]);
+            if (bl) for (var n of bl(t)) Al.call(t, n) && xl(e, n, t[n]);
+            return e;
+          })({}, e),
+        );
+      }
+      var _l = Object.getOwnPropertySymbols,
+        Sl = Object.prototype.hasOwnProperty,
+        Tl = Object.prototype.propertyIsEnumerable;
+      const Ml = (0, t.memo)(function (e) {
+        var n = e,
+          { ethereumClient: r } = n,
+          i = ((e, t) => {
+            var n = {};
+            for (var r in e) Sl.call(e, r) && t.indexOf(r) < 0 && (n[r] = e[r]);
+            if (null != e && _l)
+              for (var r of _l(e))
+                t.indexOf(r) < 0 && Tl.call(e, r) && (n[r] = e[r]);
+            return n;
+          })(n, ["ethereumClient"]);
+        const a = (0, t.useCallback)(async () => {
+          yl.ThemeCtrl.setThemeConfig(i),
+            r && yl.Id.setEthereumClient(r),
+            yl.ConfigCtrl.setConfig(i),
+            await Promise.all([s.e(4), s.e(871)]).then(s.bind(s, 2871)),
+            yl.OptionsCtrl.setIsUiLoaded(!0);
+        }, [r, i]);
+        return (
+          (0, t.useEffect)(() => {
+            a();
+          }, [a]),
+          t.createElement(El, null)
+        );
+      });
+      Object.defineProperty,
+        Object.getOwnPropertySymbols,
+        Object.prototype.hasOwnProperty,
+        Object.prototype.propertyIsEnumerable;
+      var Cl = Object.defineProperty,
+        Pl = Object.getOwnPropertySymbols,
+        Rl = Object.prototype.hasOwnProperty,
+        kl = Object.prototype.propertyIsEnumerable,
+        Il = (e, t, n) =>
+          t in e
+            ? Cl(e, t, {
+                enumerable: !0,
+                configurable: !0,
+                writable: !0,
+                value: n,
+              })
+            : (e[t] = n);
+      var Ll = s(6286);
+      const Ul = function () {
+        var e = (0, Ll.mA)(),
           n = e.address,
           r = e.isConnected,
-          i = (0, vl.k_)(),
+          i = (function () {
+            const [e, n] = (0, t.useState)(yl.jb.state);
+            return (
+              (0, t.useEffect)(() => {
+                const e = yl.jb.subscribe((e) =>
+                  n(
+                    ((e, t) => {
+                      for (var n in t || (t = {}))
+                        Rl.call(t, n) && Il(e, n, t[n]);
+                      if (Pl)
+                        for (var n of Pl(t)) kl.call(t, n) && Il(e, n, t[n]);
+                      return e;
+                    })({}, e),
+                  ),
+                );
+                return () => {
+                  e();
+                };
+              }, []),
+              {
+                isOpen: e.open,
+                open: yl.jb.open,
+                close: yl.jb.close,
+                setDefaultChain: yl.OptionsCtrl.setSelectedChain,
+              }
+            );
+          })(),
           a = i.open,
           s = i.close,
-          o = (0, bl.KQ)({ address: n }),
+          o = (0, Ll.KQ)({ address: n }),
           l = o.data,
           c = o.isLoading,
-          u = (0, bl.g0)(),
+          u = (0, Ll.g0)(),
           h = u.chains,
           d = u.switchNetwork,
-          p = (0, bl.LN)().chain;
-        return (
-          console.log("chainchainchain", p),
+          p = (0, Ll.LN)().chain;
+        return t.createElement(
+          "header",
+          null,
           t.createElement(
-            "header",
-            null,
-            t.createElement(
-              "div",
-              { className: "left" },
+            "div",
+            { className: "left" },
+            !r &&
               t.createElement(
                 "button",
                 { onClick: r ? s : a },
-                r ? "Disconnect" : "Connect to a wallet",
+                "Connect to a wallet",
               ),
-              t.createElement(ml, null),
-            ),
+            t.createElement(fl, null),
+          ),
+          t.createElement(
+            "div",
+            { className: "right" },
             t.createElement(
-              "div",
-              { className: "right" },
-              t.createElement("p", null, n.slice(0, 3) + "..." + n.slice(-3)),
-              p && t.createElement("div", null, "Connected ", p.name),
-              h.map(function (e) {
-                return t.createElement(
-                  "button",
-                  {
-                    disabled: !d || e.id === (null == p ? void 0 : p.id),
-                    key: e.id,
-                    onClick: function () {
-                      return null == d ? void 0 : d(e.id);
-                    },
-                  },
-                  e.name,
-                );
-              }),
-              !c &&
-                l &&
-                t.createElement(
-                  "div",
-                  null,
-                  t.createElement(
-                    "p",
-                    null,
-                    p.nativeCurrency.name,
-                    ": ",
-                    l.formatted.slice(0, 6),
-                  ),
-                ),
+              "p",
+              null,
+              n && n.slice(0, 3) + "..." + n.slice(-3),
             ),
-          )
+            p && t.createElement("div", null, "Connected ", p.name),
+            h.map(function (e) {
+              return t.createElement(
+                "button",
+                {
+                  disabled: !d || e.id === (null == p ? void 0 : p.id),
+                  key: e.id,
+                  onClick: function () {
+                    return null == d ? void 0 : d(e.id);
+                  },
+                },
+                e.name,
+              );
+            }),
+            !c &&
+              l &&
+              t.createElement(
+                "div",
+                null,
+                t.createElement(
+                  "p",
+                  null,
+                  p.nativeCurrency.name,
+                  ": ",
+                  l.formatted.slice(0, 6),
+                ),
+              ),
+          ),
         );
       };
-      var Al = t.lazy(function () {
-          return s.e(6).then(s.bind(s, 1006));
-        }),
-        xl = t.lazy(function () {
-          return s.e(320).then(s.bind(s, 4320));
-        });
-      const El = function () {
+      var Ol = t.lazy(function () {
+        return s.e(6).then(s.bind(s, 1006));
+      });
+      const Nl = function () {
         return t.createElement(
           oe,
           null,
@@ -63142,16 +63124,8 @@
               t.createElement(
                 t.Suspense,
                 { fallback: t.createElement(t.Fragment, null, "Loading...") },
-                t.createElement(Al, null),
+                t.createElement(Ol, null),
               ),
-            ),
-          }),
-          t.createElement(ae, {
-            path: "dashboard",
-            element: t.createElement(
-              t.Suspense,
-              { fallback: t.createElement(t.Fragment, null, "Loading...") },
-              t.createElement(xl, null),
             ),
           }),
           t.createElement(ae, {
@@ -63160,29 +63134,29 @@
           }),
         );
       };
-      var _l = s(8748),
-        Sl = {};
-      (Sl.styleTagTransform = ol()),
-        (Sl.setAttributes = rl()),
-        (Sl.insert = tl().bind(null, "head")),
-        (Sl.domAPI = $o()),
-        (Sl.insertStyleElement = al()),
-        Yo()(_l.Z, Sl),
-        _l.Z && _l.Z.locals && _l.Z.locals;
-      var Tl = function () {
+      var Dl = s(8748),
+        Bl = {};
+      (Bl.styleTagTransform = ol()),
+        (Bl.setAttributes = rl()),
+        (Bl.insert = tl().bind(null, "head")),
+        (Bl.domAPI = $o()),
+        (Bl.insertStyleElement = al()),
+        Yo()(Dl.Z, Bl),
+        Dl.Z && Dl.Z.locals && Dl.Z.locals;
+      var Fl = function () {
           return t.createElement(
             "div",
             null,
             t.createElement(dl, null),
-            t.createElement(wl, null),
-            t.createElement(El, null),
+            t.createElement(Ul, null),
+            t.createElement(Nl, null),
           );
         },
-        Ml = s(3468),
-        Cl = s(6763),
-        Pl = s(6069),
-        Rl = s(6780);
-      function kl(e = [], t = []) {
+        zl = s(3468),
+        Hl = s(6763),
+        Gl = s(6069),
+        jl = s(6780);
+      function Vl(e = [], t = []) {
         return [...new Set([...e, ...t])];
       }
       s(5501),
@@ -63204,34 +63178,34 @@
         Object.getOwnPropertySymbols,
         Object.prototype.hasOwnProperty,
         Object.prototype.propertyIsEnumerable;
-      var Il = Object.defineProperty,
-        Ll = Object.defineProperties,
-        Ul = Object.getOwnPropertyDescriptors,
-        Ol = Object.getOwnPropertySymbols,
-        Nl = Object.prototype.hasOwnProperty,
-        Dl = Object.prototype.propertyIsEnumerable,
-        Bl = (e, t, n) =>
+      var Wl = Object.defineProperty,
+        ql = Object.defineProperties,
+        Ql = Object.getOwnPropertyDescriptors,
+        Kl = Object.getOwnPropertySymbols,
+        Xl = Object.prototype.hasOwnProperty,
+        Jl = Object.prototype.propertyIsEnumerable,
+        Yl = (e, t, n) =>
           t in e
-            ? Il(e, t, {
+            ? Wl(e, t, {
                 enumerable: !0,
                 configurable: !0,
                 writable: !0,
                 value: n,
               })
             : (e[t] = n),
-        Fl = (e, t) => {
-          for (var n in t || (t = {})) Nl.call(t, n) && Bl(e, n, t[n]);
-          if (Ol) for (var n of Ol(t)) Dl.call(t, n) && Bl(e, n, t[n]);
+        Zl = (e, t) => {
+          for (var n in t || (t = {})) Xl.call(t, n) && Yl(e, n, t[n]);
+          if (Kl) for (var n of Kl(t)) Jl.call(t, n) && Yl(e, n, t[n]);
           return e;
         },
-        zl = (e, t) => Ll(e, Ul(t));
-      function Hl(e) {
+        $l = (e, t) => ql(e, Ql(t));
+      function ec(e) {
         return e.includes(":");
       }
-      function Gl(e) {
-        return Hl(e) ? e.split(":")[0] : e;
+      function tc(e) {
+        return ec(e) ? e.split(":")[0] : e;
       }
-      function jl(e) {
+      function nc(e) {
         var t, n, r;
         const i = {};
         if (
@@ -63244,84 +63218,84 @@
         )
           return i;
         for (const [a, s] of Object.entries(e)) {
-          const e = Hl(a) ? [a] : s.chains,
+          const e = ec(a) ? [a] : s.chains,
             o = s.methods || [],
             l = s.events || [],
-            c = Gl(a);
-          i[c] = zl(Fl({}, i[c]), {
-            chains: kl(e, null == (t = i[c]) ? void 0 : t.chains),
-            methods: kl(o, null == (n = i[c]) ? void 0 : n.methods),
-            events: kl(l, null == (r = i[c]) ? void 0 : r.events),
+            c = tc(a);
+          i[c] = $l(Zl({}, i[c]), {
+            chains: Vl(e, null == (t = i[c]) ? void 0 : t.chains),
+            methods: Vl(o, null == (n = i[c]) ? void 0 : n.methods),
+            events: Vl(l, null == (r = i[c]) ? void 0 : r.events),
           });
         }
         return i;
       }
-      var Vl,
-        Wl,
-        ql,
-        Ql,
-        Kl,
-        Xl,
-        Jl,
-        Yl,
-        Zl,
-        $l,
-        ec,
-        tc,
-        nc,
-        rc,
+      var rc,
         ic,
         ac,
         sc,
         oc,
         lc,
         cc,
-        uc = s(2221),
-        hc = s(2455),
-        dc = s(1461),
-        pc = s(9575),
-        fc = s(6872),
-        mc = "eip155",
-        gc = "requestedChains",
-        yc = "wallet_addEthereumChain",
-        vc = class extends Rl.wR {
+        uc,
+        hc,
+        dc,
+        pc,
+        fc,
+        mc,
+        gc,
+        yc,
+        vc,
+        bc,
+        wc,
+        Ac,
+        xc,
+        Ec = s(2221),
+        _c = s(2455),
+        Sc = s(1461),
+        Tc = s(9575),
+        Mc = s(6872),
+        Cc = "eip155",
+        Pc = "requestedChains",
+        Rc = "wallet_addEthereumChain",
+        kc = class extends jl.wR {
           constructor(e) {
             super({ ...e, options: { isNewChainsStale: !0, ...e.options } }),
-              (0, Rl.Ko)(this, ql),
-              (0, Rl.Ko)(this, Kl),
-              (0, Rl.Ko)(this, Jl),
-              (0, Rl.Ko)(this, Zl),
-              (0, Rl.Ko)(this, ec),
-              (0, Rl.Ko)(this, nc),
-              (0, Rl.Ko)(this, ic),
-              (0, Rl.Ko)(this, sc),
-              (0, Rl.Ko)(this, lc),
-              (0, Rl.ov)(this, "id", "walletConnect"),
-              (0, Rl.ov)(this, "name", "WalletConnect"),
-              (0, Rl.ov)(this, "ready", !0),
-              (0, Rl.Ko)(this, Vl, void 0),
-              (0, Rl.Ko)(this, Wl, void 0),
-              (0, Rl.ov)(this, "onAccountsChanged", (e) => {
+              (0, jl.Ko)(this, ac),
+              (0, jl.Ko)(this, oc),
+              (0, jl.Ko)(this, cc),
+              (0, jl.Ko)(this, hc),
+              (0, jl.Ko)(this, pc),
+              (0, jl.Ko)(this, mc),
+              (0, jl.Ko)(this, yc),
+              (0, jl.Ko)(this, bc),
+              (0, jl.Ko)(this, Ac),
+              (0, jl.ov)(this, "id", "walletConnect"),
+              (0, jl.ov)(this, "name", "WalletConnect"),
+              (0, jl.ov)(this, "ready", !0),
+              (0, jl.Ko)(this, rc, void 0),
+              (0, jl.Ko)(this, ic, void 0),
+              (0, jl.ov)(this, "onAccountsChanged", (e) => {
                 0 === e.length
                   ? this.emit("disconnect")
-                  : this.emit("change", { account: (0, uc.K)(e[0]) });
+                  : this.emit("change", { account: (0, Ec.K)(e[0]) });
               }),
-              (0, Rl.ov)(this, "onChainChanged", (e) => {
+              (0, jl.ov)(this, "onChainChanged", (e) => {
                 const t = Number(e),
                   n = this.isChainUnsupported(t);
                 this.emit("change", { chain: { id: t, unsupported: n } });
               }),
-              (0, Rl.ov)(this, "onDisconnect", () => {
-                (0, Rl.U9)(this, nc, rc).call(this, []),
+              (0, jl.ov)(this, "onDisconnect", () => {
+                (0, jl.U9)(this, mc, gc).call(this, []),
                   this.emit("disconnect");
               }),
-              (0, Rl.ov)(this, "onDisplayUri", (e) => {
+              (0, jl.ov)(this, "onDisplayUri", (e) => {
                 this.emit("message", { type: "display_uri", data: e });
               }),
-              (0, Rl.ov)(this, "onConnect", () => {
+              (0, jl.ov)(this, "onConnect", () => {
                 this.emit("connect", {});
               }),
-              (0, Rl.U9)(this, ql, Ql).call(this);
+              (0, jl.U9)(this, ac, sc).call(this);
           }
           async connect({ chainId: e, pairingTopic: t } = {}) {
             try {
@@ -63333,8 +63307,8 @@
               }
               if (!n) throw new Error("No chains found on connector.");
               const r = await this.getProvider();
-              (0, Rl.U9)(this, Zl, $l).call(this);
-              const i = (0, Rl.U9)(this, Jl, Yl).call(this);
+              (0, jl.U9)(this, hc, dc).call(this);
+              const i = (0, jl.U9)(this, cc, uc).call(this);
               if ((r.session && i && (await r.disconnect()), !r.session || i)) {
                 const e = this.chains
                   .filter((e) => e.id !== n)
@@ -63345,20 +63319,20 @@
                     chains: [n],
                     optionalChains: e.length ? e : void 0,
                   }),
-                  (0, Rl.U9)(this, nc, rc).call(
+                  (0, jl.U9)(this, mc, gc).call(
                     this,
                     this.chains.map(({ id: e }) => e),
                   );
               }
               const a = await r.enable(),
-                s = (0, uc.K)(a[0]),
+                s = (0, Ec.K)(a[0]),
                 o = await this.getChainId();
               return {
                 account: s,
                 chain: { id: o, unsupported: this.isChainUnsupported(o) },
               };
             } catch (e) {
-              if (/user rejected/i.test(e?.message)) throw new hc.ab(e);
+              if (/user rejected/i.test(e?.message)) throw new _c.ab(e);
               throw e;
             }
           }
@@ -63369,13 +63343,13 @@
             } catch (e) {
               if (!/No matching key/i.test(e.message)) throw e;
             } finally {
-              (0, Rl.U9)(this, ec, tc).call(this),
-                (0, Rl.U9)(this, nc, rc).call(this, []);
+              (0, jl.U9)(this, pc, fc).call(this),
+                (0, jl.U9)(this, mc, gc).call(this, []);
             }
           }
           async getAccount() {
             const { accounts: e } = await this.getProvider();
-            return (0, uc.K)(e[0]);
+            return (0, Ec.K)(e[0]);
           }
           async getChainId() {
             const { chainId: e } = await this.getProvider();
@@ -63383,10 +63357,10 @@
           }
           async getProvider({ chainId: e } = {}) {
             return (
-              (0, Rl.ac)(this, Vl) ||
-                (await (0, Rl.U9)(this, ql, Ql).call(this)),
+              (0, jl.ac)(this, rc) ||
+                (await (0, jl.U9)(this, ac, sc).call(this)),
               e && (await this.switchChain(e)),
-              (0, Rl.ac)(this, Vl)
+              (0, jl.ac)(this, rc)
             );
           }
           async getWalletClient({ chainId: e } = {}) {
@@ -63396,7 +63370,7 @@
               ]),
               r = this.chains.find((t) => t.id === e);
             if (!t) throw new Error("provider is required.");
-            return (0, dc.K)({ account: n, chain: r, transport: (0, pc.P)(t) });
+            return (0, Sc.K)({ account: n, chain: r, transport: (0, Tc.P)(t) });
           }
           async isAuthorized() {
             try {
@@ -63404,7 +63378,7 @@
                   this.getAccount(),
                   this.getProvider(),
                 ]),
-                n = (0, Rl.U9)(this, Jl, Yl).call(this);
+                n = (0, jl.U9)(this, cc, uc).call(this);
               if (!e) return !1;
               if (n && t.session) {
                 try {
@@ -63419,17 +63393,17 @@
           }
           async switchChain(e) {
             const t = this.chains.find((t) => t.id === e);
-            if (!t) throw new hc.x3(new Error("chain not found on connector."));
+            if (!t) throw new _c.x3(new Error("chain not found on connector."));
             try {
               const n = await this.getProvider(),
-                r = (0, Rl.U9)(this, sc, oc).call(this),
-                i = (0, Rl.U9)(this, lc, cc).call(this);
-              if (!r.includes(e) && i.includes(yc)) {
+                r = (0, jl.U9)(this, bc, wc).call(this),
+                i = (0, jl.U9)(this, Ac, xc).call(this);
+              if (!r.includes(e) && i.includes(Rc)) {
                 await n.request({
-                  method: yc,
+                  method: Rc,
                   params: [
                     {
-                      chainId: (0, fc.eC)(t.id),
+                      chainId: (0, Mc.eC)(t.id),
                       blockExplorerUrls: [t.blockExplorers?.default?.url],
                       chainName: t.name,
                       nativeCurrency: t.nativeCurrency,
@@ -63437,13 +63411,13 @@
                     },
                   ],
                 });
-                const r = (0, Rl.U9)(this, ic, ac).call(this);
-                r.push(e), (0, Rl.U9)(this, nc, rc).call(this, r);
+                const r = (0, jl.U9)(this, yc, vc).call(this);
+                r.push(e), (0, jl.U9)(this, mc, gc).call(this, r);
               }
               return (
                 await n.request({
                   method: "wallet_switchEthereumChain",
-                  params: [{ chainId: (0, fc.eC)(e) }],
+                  params: [{ chainId: (0, Mc.eC)(e) }],
                 }),
                 t
               );
@@ -63453,24 +63427,24 @@
                   "string" == typeof e ? e : e?.message,
                 )
               )
-                throw new hc.ab(e);
-              throw new hc.x3(e);
+                throw new _c.ab(e);
+              throw new _c.x3(e);
             }
           }
         };
-      (Vl = new WeakMap()),
-        (Wl = new WeakMap()),
-        (ql = new WeakSet()),
-        (Ql = async function () {
+      (rc = new WeakMap()),
+        (ic = new WeakMap()),
+        (ac = new WeakSet()),
+        (sc = async function () {
           return (
-            (0, Rl.ac)(this, Wl) ||
+            (0, jl.ac)(this, ic) ||
               "undefined" == typeof window ||
-              (0, Rl.qx)(this, Wl, (0, Rl.U9)(this, Kl, Xl).call(this)),
-            (0, Rl.ac)(this, Wl)
+              (0, jl.qx)(this, ic, (0, jl.U9)(this, oc, lc).call(this)),
+            (0, jl.ac)(this, ic)
           );
         }),
-        (Kl = new WeakSet()),
-        (Xl = async function () {
+        (oc = new WeakSet()),
+        (lc = async function () {
           const {
               EthereumProvider: e,
               OPTIONAL_EVENTS: t,
@@ -63485,9 +63459,9 @@
               metadata: l,
               relayUrl: c,
             } = this.options;
-            (0, Rl.qx)(
+            (0, jl.qx)(
               this,
-              Vl,
+              rc,
               await e.init({
                 showQrModal: s,
                 qrModalOptions: o,
@@ -63505,84 +63479,84 @@
             );
           }
         }),
-        (Jl = new WeakSet()),
-        (Yl = function () {
-          if ((0, Rl.U9)(this, lc, cc).call(this).includes(yc)) return !1;
+        (cc = new WeakSet()),
+        (uc = function () {
+          if ((0, jl.U9)(this, Ac, xc).call(this).includes(Rc)) return !1;
           if (!this.options.isNewChainsStale) return !1;
-          const e = (0, Rl.U9)(this, ic, ac).call(this),
+          const e = (0, jl.U9)(this, yc, vc).call(this),
             t = this.chains.map(({ id: e }) => e),
-            n = (0, Rl.U9)(this, sc, oc).call(this);
+            n = (0, jl.U9)(this, bc, wc).call(this);
           return !(
             (n.length && !n.some((e) => t.includes(e))) ||
             t.every((t) => e.includes(t))
           );
         }),
-        (Zl = new WeakSet()),
-        ($l = function () {
-          (0, Rl.ac)(this, Vl) &&
-            ((0, Rl.U9)(this, ec, tc).call(this),
-            (0, Rl.ac)(this, Vl).on("accountsChanged", this.onAccountsChanged),
-            (0, Rl.ac)(this, Vl).on("chainChanged", this.onChainChanged),
-            (0, Rl.ac)(this, Vl).on("disconnect", this.onDisconnect),
-            (0, Rl.ac)(this, Vl).on("session_delete", this.onDisconnect),
-            (0, Rl.ac)(this, Vl).on("display_uri", this.onDisplayUri),
-            (0, Rl.ac)(this, Vl).on("connect", this.onConnect));
+        (hc = new WeakSet()),
+        (dc = function () {
+          (0, jl.ac)(this, rc) &&
+            ((0, jl.U9)(this, pc, fc).call(this),
+            (0, jl.ac)(this, rc).on("accountsChanged", this.onAccountsChanged),
+            (0, jl.ac)(this, rc).on("chainChanged", this.onChainChanged),
+            (0, jl.ac)(this, rc).on("disconnect", this.onDisconnect),
+            (0, jl.ac)(this, rc).on("session_delete", this.onDisconnect),
+            (0, jl.ac)(this, rc).on("display_uri", this.onDisplayUri),
+            (0, jl.ac)(this, rc).on("connect", this.onConnect));
         }),
-        (ec = new WeakSet()),
-        (tc = function () {
-          (0, Rl.ac)(this, Vl) &&
-            ((0, Rl.ac)(this, Vl).removeListener(
+        (pc = new WeakSet()),
+        (fc = function () {
+          (0, jl.ac)(this, rc) &&
+            ((0, jl.ac)(this, rc).removeListener(
               "accountsChanged",
               this.onAccountsChanged,
             ),
-            (0, Rl.ac)(this, Vl).removeListener(
+            (0, jl.ac)(this, rc).removeListener(
               "chainChanged",
               this.onChainChanged,
             ),
-            (0, Rl.ac)(this, Vl).removeListener(
+            (0, jl.ac)(this, rc).removeListener(
               "disconnect",
               this.onDisconnect,
             ),
-            (0, Rl.ac)(this, Vl).removeListener(
+            (0, jl.ac)(this, rc).removeListener(
               "session_delete",
               this.onDisconnect,
             ),
-            (0, Rl.ac)(this, Vl).removeListener(
+            (0, jl.ac)(this, rc).removeListener(
               "display_uri",
               this.onDisplayUri,
             ),
-            (0, Rl.ac)(this, Vl).removeListener("connect", this.onConnect));
+            (0, jl.ac)(this, rc).removeListener("connect", this.onConnect));
         }),
-        (nc = new WeakSet()),
-        (rc = function (e) {
-          this.storage?.setItem(gc, e);
+        (mc = new WeakSet()),
+        (gc = function (e) {
+          this.storage?.setItem(Pc, e);
         }),
-        (ic = new WeakSet()),
-        (ac = function () {
-          return this.storage?.getItem(gc) ?? [];
+        (yc = new WeakSet()),
+        (vc = function () {
+          return this.storage?.getItem(Pc) ?? [];
         }),
-        (sc = new WeakSet()),
-        (oc = function () {
-          if (!(0, Rl.ac)(this, Vl)) return [];
-          const e = (0, Rl.ac)(this, Vl).session?.namespaces;
+        (bc = new WeakSet()),
+        (wc = function () {
+          if (!(0, jl.ac)(this, rc)) return [];
+          const e = (0, jl.ac)(this, rc).session?.namespaces;
           if (!e) return [];
-          const t = jl(e),
-            n = t[mc]?.chains?.map((e) => parseInt(e.split(":")[1] || ""));
+          const t = nc(e),
+            n = t[Cc]?.chains?.map((e) => parseInt(e.split(":")[1] || ""));
           return n ?? [];
         }),
-        (lc = new WeakSet()),
-        (cc = function () {
-          if (!(0, Rl.ac)(this, Vl)) return [];
-          const e = (0, Rl.ac)(this, Vl).session?.namespaces;
+        (Ac = new WeakSet()),
+        (xc = function () {
+          if (!(0, jl.ac)(this, rc)) return [];
+          const e = (0, jl.ac)(this, rc).session?.namespaces;
           if (!e) return [];
-          const t = jl(e),
-            n = t[mc]?.methods;
+          const t = nc(e),
+            n = t[Cc]?.methods;
           return n ?? [];
         });
-      var bc = s(1407),
-        wc = [bc.RJ, bc.yu],
-        Ac = "d2e2d969472a9f1989ea35333b09fcda",
-        xc = (0, Cl.QB)(wc, [
+      var Ic = s(1407),
+        Lc = [Ic.RJ, Ic.yu],
+        Uc = "d2e2d969472a9f1989ea35333b09fcda",
+        Oc = (0, Hl.QB)(Lc, [
           (function ({ projectId: e }) {
             return (function ({ rpc: e }) {
               return function (t) {
@@ -63620,33 +63594,33 @@
                     };
               },
             });
-          })({ projectId: Ac }),
+          })({ projectId: Uc }),
         ]),
-        Ec = xc.publicClient,
-        _c = (0, bl._g)({
+        Nc = Oc.publicClient,
+        Dc = (0, Ll._g)({
           autoConnect: !0,
           connectors: (function ({ chains: e, projectId: t }) {
             return [
-              new vc({ chains: e, options: { projectId: t, showQrModal: !1 } }),
-              new Pl._({ chains: e, options: { shimDisconnect: !0 } }),
+              new kc({ chains: e, options: { projectId: t, showQrModal: !1 } }),
+              new Gl._({ chains: e, options: { shimDisconnect: !0 } }),
             ];
-          })({ projectId: Ac, chains: wc }),
-          publicClient: Ec,
+          })({ projectId: Uc, chains: Lc }),
+          publicClient: Nc,
         }),
-        Sc = new (class {
+        Bc = new (class {
           constructor(e, t) {
             (this.wagmi = {}),
               (this.chains = []),
               (this.namespace = "eip155"),
-              (this.disconnect = Cl.zP),
-              (this.getAccount = Cl.D0),
-              (this.watchAccount = Cl.uH),
-              (this.fetchBalance = Cl.EG),
-              (this.getNetwork = Cl.Hy),
-              (this.watchNetwork = Cl.QC),
-              (this.switchNetwork = Cl.If),
-              (this.fetchEnsName = Cl.Lk),
-              (this.fetchEnsAvatar = Cl.w6),
+              (this.disconnect = Hl.zP),
+              (this.getAccount = Hl.D0),
+              (this.watchAccount = Hl.uH),
+              (this.fetchBalance = Hl.EG),
+              (this.getNetwork = Hl.Hy),
+              (this.watchNetwork = Hl.QC),
+              (this.switchNetwork = Hl.If),
+              (this.fetchEnsName = Hl.Lk),
+              (this.fetchEnsAvatar = Hl.w6),
               (this.wagmi = e),
               (this.chains = t);
           }
@@ -63683,14 +63657,14 @@
             return (
               t && (r.chainId = t),
               Promise.all([
-                (0, Cl.$j)(r),
+                (0, Hl.$j)(r),
                 this.connectWalletConnectProvider(n, e),
               ])
             );
           }
           async connectConnector(e, t) {
             const n = { connector: this.getConnectorById(e) };
-            return t && (n.chainId = t), await (0, Cl.$j)(n);
+            return t && (n.chainId = t), await (0, Hl.$j)(n);
           }
           isInjectedProviderInstalled() {
             return typeof window.ethereum < "u";
@@ -63730,29 +63704,29 @@
             }
             return "ALL";
           }
-        })(_c, wc),
-        Tc = function (e) {
+        })(Dc, Lc),
+        Fc = function (e) {
           var n = e.children;
           return t.createElement(
-            bl.eM,
-            { config: _c },
+            Ll.eM,
+            { config: Dc },
             n,
-            t.createElement(vl.Eg, { projectId: Ac, ethereumClient: Sc }),
+            t.createElement(Ml, { projectId: Uc, ethereumClient: Bc }),
           );
         },
-        Mc = document.getElementById("app");
-      if (!Mc) throw new Error("No root element found");
-      (0, r.s)(Mc).render(
+        zc = document.getElementById("app");
+      if (!zc) throw new Error("No root element found");
+      (0, r.s)(zc).render(
         t.createElement(
           t.StrictMode,
           null,
           t.createElement(
-            Tc,
+            Fc,
             null,
             t.createElement(
-              Ml.g,
+              zl.g,
               null,
-              t.createElement(de, null, t.createElement(Tl, null)),
+              t.createElement(de, null, t.createElement(Fl, null)),
             ),
           ),
         ),

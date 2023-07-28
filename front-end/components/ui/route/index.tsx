@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const MarketIcon = () => (
@@ -18,7 +18,7 @@ const MarketIcon = () => (
   </svg>
 );
 
-const Route_nav: React.FC = (): ReactElement => {
+const Route_nav = () => {
   return (
     <nav>
       <Link to="market">

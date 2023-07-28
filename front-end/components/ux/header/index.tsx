@@ -1,27 +1,49 @@
 import React from "react";
 import Route_nav from "~UI/route";
 import "./header.sass";
-import { useWeb3Modal } from "@web3modal/react";
-import { useAccount, useBalance, useSwitchNetwork, useNetwork } from "wagmi";
+import {
+  useAccount,
+  useBalance,
+  useSwitchNetwork,
+  useNetwork,
+  useConnect,
+  useDisconnect,
+} from "wagmi";
+import { Connector } from "@wagmi/core";
 
 const Header = () => {
-  const { address, isConnected } = useAccount();
-  const { open, close } = useWeb3Modal();
+  const { address } = useAccount();
   const { data: balance, isLoading: isBalanceLoading } = useBalance({
     address,
   });
   const { chains, switchNetwork } = useSwitchNetwork();
   const { chain } = useNetwork();
+  const { connect, connectors, error, isLoading, pendingConnector } =
+    useConnect();
+  const { disconnect } = useDisconnect({});
+
+  const handleConnect = (connector: Connector) => {
+    connect({ connector });
+  };
 
   return (
     <header>
       <div className="left">
-        {!isConnected && (
-          <button onClick={isConnected ? close : open}>
-            Connect to a wallet
+        {!address &&
+          connectors.map((connector) => (
+            <button key={connector.id} onClick={() => handleConnect(connector)}>
+              {connector.name}
+              {isLoading &&
+                pendingConnector?.id === connector.id &&
+                " (connecting)"}
+            </button>
+          ))}
+        <Route_nav />
+        {address && (
+          <button onClick={() => disconnect()} disabled={isLoading}>
+            Disconnect
           </button>
         )}
-        <Route_nav />
       </div>
 
       <div className="right">
@@ -44,6 +66,8 @@ const Header = () => {
           </div>
         )}
       </div>
+      {error && <div>{error.message}</div>}
+      {isLoading && <div>Connecting...</div>}
     </header>
   );
 };
